@@ -40,7 +40,7 @@ public class CryptoManager {
 		for(int i=0; i< caesarLength; i++) {
 			char thisChar = plainText.charAt(i);
 			int encryptedCharInt = (int)thisChar + key;
-			if(encryptedCharInt>UPPER_BOUND) {
+			while(encryptedCharInt>UPPER_BOUND) {
 				encryptedCharInt-=RANGE;
 			}
 			encryptedText += (char)encryptedCharInt;
@@ -86,7 +86,7 @@ public class CryptoManager {
 		for(int i=0; i< caesarLength; i++) {
 			char thisChar = encryptedText.charAt(i);
 			int decryptedCharInt = (int)thisChar - key;
-			if(decryptedCharInt<LOWER_BOUND) {
+			while(decryptedCharInt<LOWER_BOUND) {
 				decryptedCharInt+=RANGE;
 			}
 			decryptedText += (char)decryptedCharInt;

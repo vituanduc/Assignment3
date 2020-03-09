@@ -63,7 +63,7 @@ public class CryptoManager {
 		for(int i =0;i<plainTextLength; i++) {
 			char thisChar = plainText.charAt(i);
 			int encryptedCharInt =((int)thisChar+(int)bellasoStr.charAt(i%bellasoLength));
-			while(encryptedCharInt > LOWER_BOUND) {
+			while(encryptedCharInt > UPPER_BOUND) {
 				encryptedCharInt-= RANGE;
 			}
 			encryptedText+= (char)encryptedCharInt;
@@ -85,9 +85,9 @@ public class CryptoManager {
 		int caesarLength = encryptedText.length();
 		for(int i=0; i< caesarLength; i++) {
 			char thisChar = encryptedText.charAt(i);
-			int decryptedCharInt = (int)thisChar + key;
-			if(decryptedCharInt>UPPER_BOUND) {
-				decryptedCharInt-=RANGE;
+			int decryptedCharInt = (int)thisChar - key;
+			if(decryptedCharInt<LOWER_BOUND) {
+				decryptedCharInt+=RANGE;
 			}
 			decryptedText += (char)decryptedCharInt;
 		}
